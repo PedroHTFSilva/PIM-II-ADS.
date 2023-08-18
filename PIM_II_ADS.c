@@ -8,7 +8,8 @@
 // Função -> ABRIR ARQUIVO 
 FILE* AbreArquivo(char modo, char caminho[30]){
     FILE *arquivo;
-    switch(modo){
+    switch(modo)
+    {
         case 'g'://ABRIR E GRAVAR
             arquivo = fopen(caminho,"wt");
             break;
@@ -19,7 +20,9 @@ FILE* AbreArquivo(char modo, char caminho[30]){
             arquivo = fopen(caminho,"a");
             break;
     }
-    if(arquivo==NULL){//Se houver algum erro, o ponteiro apontar? para NULL
+    if(arquivo==NULL)
+    {
+        //Se houver algum erro, o ponteiro aponta para NULL
         printf("Nao foi possivel abrir o arquivo");
         exit(0);
     }
@@ -28,7 +31,8 @@ FILE* AbreArquivo(char modo, char caminho[30]){
 
 //Função -> FECHAR ARQUIVO
 
-void FecharArquivo(FILE *arquivo){
+void FecharArquivo(FILE *arquivo)
+{
     fclose(arquivo);
 }
 
@@ -150,57 +154,54 @@ int main (){
 
     char id[50];  //Definição de variável login      
 
-Login:
+    Login: 
 
-printf("\nLogin:");
+    printf("\nLogin:");
 
-scanf("%s", &id);
+    scanf("%s", &id);
 
-if (strcmp(id,"admin")==0)
+    if (strcmp(id,"admin")==0)
 
-{
+    {
 
-printf("\nLogin esta correto!\n");
+    printf("\nLogin esta correto!\n");
 
-}
+    }
 
-else
+    else
 
-{
+    {
 
-printf("\nLogin incorreto, por favor tente novamente.\n");
+    printf("\nLogin incorreto, por favor tente novamente.\n");
 
-goto Login;
+    goto Login;
 
-}
+    }
 
-char password[50]; //Definição de váriavel Password
+    char password[50]; //Definição de váriavel Password
 
-password:
+    password:
 
-printf("\nSenha: ");
+    printf("\nSenha: ");
+    scanf("%s", &password);
 
-scanf("%s", &password);
+    if(strcmp(password,"admin123")==0)
 
-if(strcmp(password,"admin123")==0)
+    {
+        system("cls");
+        printf("\n\n Voce logou no sistema da SQUID SOCIAL AGENCY\n");
+        system("cls");
+    }
 
-{
-system("cls");
-printf("\n\n Voce logou no sistema da SQUID SOCIAL AGENCY\n");
-system("cls");
-}
+    else
 
-else
+    {
 
-{
+        printf("\nLogin incorreto, por favor tente novamente.\n");
+        goto password;
+    }
 
-printf("\nLogin incorreto, por favor tente novamente.\n");
-
-goto password;
-
-}
-
-//MENU PRINCIPAL
+    //MENU PRINCIPAL
 
 Menu:
 	
@@ -212,8 +213,6 @@ Menu:
 	printf("\n\n3-> RH");
 	printf("\n\n\nDigite o numero correspondente a opcao desejada: ");
 	scanf("%d", &x);
-	
-	
 	
 	switch(x){
 		//MENU ADMINISTRATIVO
@@ -227,216 +226,215 @@ Menu:
 		printf("\n\nDigite o numero correspondente a opcao desejada: ");
 		scanf("%d", &adm);
 			
-			
-			
-			switch(adm){
+	switch(adm){
 				
-					case 1://CADASTRO DE CLIENTES
-						int opcao;
-    					char nome[30];
-    					char sobrenome[30];
-   						char funcionario[30];
-  						int telefone;
- 					   	int verba;
-    				
-								do{
-        							system("cls");
-        							printf("\n\n\Bem Vindo ao programa CADASTRO DE CLIENTES\n");
-       								printf("\nMENU\n");
-        							printf("\n 1 - Cadastrar novo cliente\n");
-        							printf("\n 2 - Listar todos os clientes\n");
-        							printf("\n 3 - Voltar\n");
+		case 1://CADASTRO DE CLIENTES
+		    int opcao;
+    	    char nome[30];
+    	    char sobrenome[30];
+   		    char funcionario[30];
+  		    int telefone;
+ 		    int verba;		
+			do{
+        		system("cls");
+        	    printf("\n\n\Bem Vindo ao programa CADASTRO DE CLIENTES\n");
+       			printf("\nMENU\n");
+        		printf("\n 1 - Cadastrar novo cliente\n");
+        		printf("\n 2 - Listar todos os clientes\n");
+        		printf("\n 3 - Voltar\n");
+                printf("\nDigite uma opcao: ");
+        		scanf("%d", &opcao);
+       			system("cls");
 
-        							printf("\nDigite uma opcao: ");
-        							scanf("%d", &opcao);
-       								system("cls");
-
-        								switch(opcao){
+    switch(opcao){
         				
-            											case 1:
-               												 printf("\nDigite o nome: ");
-                											 setbuf(stdin,NULL);
-                		 									 gets(nome);
-                											 printf("\nDigite o segundo nome: ");
-                											 setbuf(stdin,NULL);
-                											 gets(sobrenome);
-                											 printf("\nDigite o nome do funcionario: ");
-                											 setbuf(stdin,NULL);
-               												 gets(funcionario);
-                											 printf("\nDigite o telefone: ");
-                											 scanf("%d", &telefone);
-                											 printf("\nDigite o valor da verba: ");
-              												 scanf("%d", &verba);
-                											 CadastrarCliente(nome, sobrenome, funcionario, telefone, verba);
-               												 system("pause");
-              												 break;
+        case 1:
+               	printf("\nDigite o nome: ");
+                setbuf(stdin,NULL);
+                gets(nome);
+                printf("\nDigite o segundo nome: ");
+                setbuf(stdin,NULL);
+                gets(sobrenome);
+                printf("\nDigite o nome do funcionario: ");
+                setbuf(stdin,NULL);
+               	gets(funcionario);
+                printf("\nDigite o telefone: ");
+                scanf("%d", &telefone);
+                printf("\nDigite o valor da verba: ");
+              	scanf("%d", &verba);
+                CadastrarCliente(nome, sobrenome, funcionario, telefone, verba);
+               	system("pause");
+              	break;
               			 
-            											case 2:
-               												 ListarCliente();
-              												 system("pause");
-                											 break;
+        case 2:
+               	ListarCliente();
+              	system("pause");
+                break;
                 		 
-            											case 3:
-                											 printf("\n\nVoltando...\n\n");
-                											 goto Menu;
-                										     break;
-                		
-            											default:
-               											printf("\n\nOpcao invalida! Tente Novamente!\n\n");
-                										system("pause");
-
-       													}
+        case 3:
+                printf("\n\nVoltando...\n\n");
+                goto Menu;
+                break;
+                default:
+               	printf("\n\nOpcao invalida! Tente Novamente!\n\n");
+                system("pause");
+                                    }
    														
-														}while(opcao!=3);
-
-    													return 0;
-						break;
+			}while(opcao!=3);
+            return 0;
+			break;
 											
-					case 2://LANCAMENTO DE RECEITAS
-						int opcaoR;
-    					char descricao[30];
-  						int valor;
+		case 2://LANCAMENTO DE RECEITAS
+			int opcaoR;
+    		char descricao[30];
+  			int valor;
     					
-								do{
-							        system("cls");
-							        printf("\n\nBem Vindo ao LANCAMENTO DE RECEITAS\n");
-							        printf("\nMENU\n");
-							        printf("\n 1 - Lancar Receitas\n");
-							        printf("\n 2 - Relacao das Receitas\n");
-							        printf("\n 3 - Voltar\n");
-							
-							        printf("\nDigite uma opcao: ");
-							        scanf("%d", &opcaoR);
-							        system("cls");
+				do{
+				    system("cls");
+					printf("\n\nBem Vindo ao LANCAMENTO DE RECEITAS\n");
+				    printf("\nMENU\n");
+					printf("\n 1 - Lancar Receitas\n");
+					printf("\n 2 - Relacao das Receitas\n");
+					printf("\n 3 - Voltar\n");
+					printf("\nDigite uma opcao: ");
+					scanf("%d", &opcaoR);
+					system("cls");
 
-								        switch(opcaoR){
+	switch(opcaoR){
 								        	
-											            case 1:
-											                printf("\nDigite a descricao: ");
-											                setbuf(stdin,NULL);
-											                gets(descricao);
-											                printf("\nDigite o valor: ");
-											                scanf("%d", &valor);
-											                CadastrarReceita(descricao, valor);
-											                system("pause");
-											                break;
-											            case 2:
-											                ListarReceitas();
-											                system("pause");
-											                break;
-											            case 3:
-											                printf("\n\nVoltando...\n\n");
-											                goto Menu;
-											                break;
-											
-											            default:
-											                printf("\n\nOpcao invalida! Tente Novamente!\n\n");
-											                system("pause");
+		case 1:
+			printf("\nDigite a descricao: ");
+			setbuf(stdin,NULL);
+			gets(descricao);
+		    printf("\nDigite o valor: ");
+			scanf("%d", &valor);
+			CadastrarReceita(descricao, valor);
+			system("pause");
+			break;
 
-													        }
+		case 2:
+			ListarReceitas();
+		    system("pause");
+			break;
+		
+        case 3:
+			printf("\n\nVoltando...\n\n");
+			goto Menu;
+			break;
+											
+		default:
+
+		printf("\n\nOpcao invalida! Tente Novamente!\n\n");
+		system("pause");
+
+				}
 													        
-													    	}while(opcaoR!=3);
+					}while(opcaoR!=3);
 													
-													    	return 0;
-						break;		
+		return 0;
+		break;		
 									
-					case 3://DECLARACAO DE DESPESAS
-						int opcaoD;
-    					char descricaoD[30];
-  						int valorD;
+		case 3://DECLARACAO DE DESPESAS
+			
+            int opcaoD;
+    		char descricaoD[30];
+  			int valorD;
     					
-								do{
-							        system("cls");
-							        printf("\n\nBem Vindo ao DECLARACAO DE DESPESAS\n");
-							        printf("\nMENU\n");
-							        printf("\n 1 - Lancar Despesas\n");
-							        printf("\n 2 - Relacao das Despesas\n");
-							        printf("\n 3 - Voltar\n");
+		do{
+			system("cls");
+			printf("\n\nBem Vindo ao DECLARACAO DE DESPESAS\n");
+			printf("\nMENU\n");
+			printf("\n 1 - Lancar Despesas\n");
+			printf("\n 2 - Relacao das Despesas\n");
+			printf("\n 3 - Voltar\n");
 							
-							        printf("\nDigite uma opcao: ");
-							        scanf("%d", &opcaoD);
-							        system("cls");
+		    printf("\nDigite uma opcao: ");
+			scanf("%d", &opcaoD);
+		    system("cls");
 
-								        switch(opcaoD){
+		switch(opcaoD){
 								        	
-											            case 1:
-											                printf("\nDigite a descricao: ");
-											                setbuf(stdin,NULL);
-											                gets(descricaoD);
-											                printf("\nDigite o valor: ");
-											                scanf("%d", &valorD);
-											                CadastrarDespesa(descricaoD, valorD);
-											                system("pause");
-											                break;
-											            case 2:
-											                ListarDespesas();
-											                system("pause");
-											                break;
-											            case 3:
-											                printf("\n\nVoltando...\n\n");
-											                goto Menu;
-											                break;
-											
-											            default:
-											                printf("\n\nOpcao invalida! Tente Novamente!\n\n");
-											                system("pause");
-
-													        }
+			case 1:
+				printf("\nDigite a descricao: ");
+				setbuf(stdin,NULL);
+				gets(descricaoD);
+				printf("\nDigite o valor: ");
+				scanf("%d", &valorD);
+				CadastrarDespesa(descricaoD, valorD);
+				system("pause");
+			    break;
+			
+            case 2:
+			    ListarDespesas();
+				system("pause");
+				break;
+			
+            case 3:
+			printf("\n\nVoltando...\n\n");
+			goto Menu;
+		    break;				
+		    default:
+			printf("\n\nOpcao invalida! Tente Novamente!\n\n");
+			system("pause");
+			}
 													        
-													    	}while(opcaoD!=3);
+		}while(opcaoD!=3);
 													
-													    	return 0;						
-						break;					
-					default:
-						printf("\n\nAté Mais!");
-						system("pause");
-						break;					
-					}
+		return 0;						
+		break;					
+		default:
+		printf("\n\nAté Mais!");
+		system("pause");
+		break;					
+		}
 		break;
 			
 			
 					
-				case 2://MENU FINANCEIRO
-					system("cls");
-					int fin;			
-					printf("\n\nMENU FINANCEIRO - SQUID SOCIAL AGENCY");
-					printf("\n\n1-> Relacao de Receitas");
-					printf("\n\n2-> Relacao de Desepesas");
-					printf("\n\n3-> Balanco Financeiro");
-					printf("\n\nDigite o numero correspondente a opcao desejada: ");
-					scanf("%d", &fin);
+			case 2://MENU FINANCEIRO
+			system("cls");
+			int fin;			
+			printf("\n\nMENU FINANCEIRO - SQUID SOCIAL AGENCY");
+			printf("\n\n1-> Relacao de Receitas");
+			printf("\n\n2-> Relacao de Desepesas");
+			printf("\n\n3-> Balanco Financeiro");
+			printf("\n\nDigite o numero correspondente a opcao desejada: ");
+			scanf("%d", &fin);
 						
-									switch(fin){
+		switch(fin){
 									
-										case 1://RELACAO DE RECEITAS
-											system("cls");
-											ListarReceitas();
-											system("pause");
-											break;
-										case 2:
-											system("cls");
-											ListarDespesas();
-											system("pause");
-											break;					
-										case 3:
-											system("cls");
-											ListarCliente();
-											system("pause");
-											break;					
-										default:
-											printf("\n\nOpcao Invalida");
-											break;					
-										}
-							break;
+				case 1://RELACAO DE RECEITAS
+				system("cls");
+				ListarReceitas();
+				system("pause");
+				break;
+				
+                case 2:
+				system("cls");
+				ListarDespesas();
+				system("pause");
+				break;					
+				
+                case 3:
+				system("cls");
+				ListarCliente();
+				system("pause");
+				break;					
+			    default:
+				printf("\n\nOpcao Invalida");
+				break;					
+				}
+break;
 		
 //MENU RH
 		
-		case 3:
-			int opcaoF;
-    		char nomeF[30];
-    		char cpf[15];
-    		int telefoneF;
-    		int salario;
+case 3:
+	int opcaoF;
+    char nomeF[30];
+    char cpf[15];
+    int telefoneF;
+    int salario;
+    
     do{
         system("cls");
         printf("\n\n\ Bem Vindo ao programa RECURSOS HUMANOS\n");
@@ -450,6 +448,7 @@ Menu:
         system("cls");
 			
         switch(opcaoF){
+            
             case 1:
                 printf("\nDigite o nome: ");
                 setbuf(stdin,NULL);
@@ -463,10 +462,12 @@ Menu:
                 CadastrarFuncionario(nomeF, cpf, telefoneF, salario);
                 system("pause");
                 break;
+           
             case 2:
                 ListarFuncionario();
                 system("pause");
                 break;
+            
             case 3:
                 printf("\n\nVoltando...\n\n");
                 system("pause");
@@ -479,7 +480,7 @@ Menu:
 
         }
     }while(opcaoF!=3);
-		}
+}
 		
 //REDIRECIONAMENTO PRO MENU INICIAL		
 
